@@ -14,6 +14,14 @@ export class EventService {
     private http: HttpClient) {
   }
 
+  create(event: Event): Observable<any> {
+    return this.http.post<Event>(this.eventsUrl, event)
+  }
+
+  remove(id: number): Observable<any> {
+    return this.http.delete<Event>(`${this.eventsUrl}/${id}`)
+  }
+
   getAll(): Observable<Event[]> {
     return this.http.get<Event[]>(this.eventsUrl);
   }
